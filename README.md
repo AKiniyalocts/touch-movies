@@ -35,6 +35,7 @@ Below is a list of the actual hardware I used in this project. While I am sure t
 - [USB Mini OTG cable](https://www.amazon.com/dp/B00N9S9Z0G) (for speaker)
 - [USB Speaker](https://www.amazon.com/dp/B075M7FHM1)
 - [Enclosure](https://www.amazon.com/dp/B0FHVT1WCQ)
+- [NFC Tags](https://www.amazon.com/gp/aw/d/B071KTC2J6?psc=1&ref=ppx_pop_mob_b_asin_title)
 
 ## Hardware Setup
 
