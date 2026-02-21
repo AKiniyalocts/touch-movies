@@ -1,4 +1,4 @@
-# movie-cards — NFC Tag Reader 
+# touch-movies — NFC Tag Reader 
 Read NFC tag URI using a PN532 module connected to a Raspberry Pi Zero W over I2C.
 
 Send a webhook to a local home assistant server when a specific tag format is read.
