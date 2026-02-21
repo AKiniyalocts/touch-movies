@@ -1,8 +1,23 @@
-# movie-cards — NFC Tag Reader
+# movie-cards — NFC Tag Reader 
+Read NFC tag URI using a PN532 module connected to a Raspberry Pi Zero W over I2C.
 
-Read NFC tag UIDs using a PN532 module connected to a Raspberry Pi Zero W over I2C.
+Send a webhook to a local home assistant server when a specific tag format is read.
 
-## Hardware
+Start a home automation on home assistant.
+
+# Specific project goals
+
+Create physical media cards tied to a specific video/show (storing an id for the media on an NFC sticker) hosted on a local media server.
+
+Enable users (mainly my children) to scan the media cards on a physical device (a raspberry pi w/ NFC module) and play the media on the local smart TV.
+
+## Hardware/Software Assumptions
+- Home assistant
+- Jellyfin server
+- Jellyfin for Android TV
+- Android/Google TV (something running Android)
+
+(there are certainly other options for all of these. This is just what I have available.)
 
 ### PN532 DIP Switch Settings (I2C mode)
 
@@ -53,23 +68,10 @@ Tap an NFC tag to see its UID:
 ```
 Tag detected — UID: DE:AD:BE:EF (4 bytes)
 ```
+When a Home assistant tag is scanned:
+```
+//TODO
+```
 
 Press Ctrl+C to exit.
 
-## Troubleshooting
-
-### Device not detected at 0x24
-- Verify DIP switches are set to I2C mode (1=ON, 2=OFF).
-- Check all four wires are connected to the correct pins.
-- Make sure I2C is enabled and you've rebooted.
-
-### Flaky communication / frequent I2C errors
-The BCM2835 has a known I2C clock stretching bug. Reduce the bus speed:
-```
-# Add to /boot/config.txt (or /boot/firmware/config.txt):
-dtparam=i2c_arm_baudrate=50000
-```
-Then reboot.
-
-### Power issues
-If the PN532 resets or behaves erratically, try powering it from an external 5V supply. Connect GND of the external supply to a Pi GND pin.

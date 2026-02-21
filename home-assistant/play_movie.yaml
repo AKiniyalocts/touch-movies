@@ -1,0 +1,39 @@
+alias: Scan Movie
+description: ""
+triggers:
+  - trigger: event
+    event_type: tag_scanned
+conditions: []
+actions:
+  - type: turn_on
+    device_id: 3c6b3ae49919311e2eda0ce40bc2544b
+    entity_id: 6a162908a32f2da3846273931083cca8
+    domain: remote
+  - action: androidtv.adb_command
+    metadata: {}
+    target:
+      device_id: 3c6b3ae49919311e2eda0ce40bc2544b
+    data:
+      command: HOME
+  - action: androidtv.adb_command
+    metadata: {}
+    target:
+      device_id: 3c6b3ae49919311e2eda0ce40bc2544b
+    data:
+      command: >-
+        am start -S -c android.intent.category.LEANBACK_LAUNCHER -a
+        android.intent.action.VIEW -d {{ trigger.event.data.tag_id }} -e source
+        30 org.jellyfin.androidtv/.ui.startup.StartupActivity
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+    enabled: true
+  - action: androidtv.adb_command
+    metadata: {}
+    target:
+      device_id: 3c6b3ae49919311e2eda0ce40bc2544b
+    data:
+      command: CENTER
+mode: single
